@@ -1,7 +1,0 @@
-env
-*.pdf
-*.fls
-*.gz
-*.log
-*.aux
-*.tex
