@@ -22,6 +22,10 @@ template = latex_annex_env.get_template('annex_a.jinja2')
 
 df = pd.read_excel('data.xlsx')
 
+df['stateOfMatter'] = pd.Categorical(df.stateOfMatter, categories=['gas', 'liquid', 'solid'], ordered=True)
+
+df.sort_values('stateOfMatter', inplace=True)
+
 if __name__ == "__main__":
 
     for i, row in df.iterrows():
