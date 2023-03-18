@@ -30,4 +30,4 @@ if __name__ == "__main__":
     with open("annex_a.tex", "w") as f:
         f.write(template.render())
 
-    subprocess.run(["pdflatex", "annex_a.tex"])
+    # subprocess.run(["pdflatex", "annex_a.tex"])
