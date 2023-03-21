@@ -5,3 +5,5 @@ env
 *.log
 *.aux
 *.tex
+*.latexmk
+*.tex
