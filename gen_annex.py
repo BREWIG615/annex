@@ -31,7 +31,20 @@ if __name__ == "__main__":
     for i, row in df.iterrows():
         print(row)
 
-    with open("annex_a.tex", "w") as f:
-        f.write(template.render())
+    with open("annex_a.tex", "w"
+    ) as tf:
+        tf.write(
+            df[["assetName", 
+                "desc", 
+                "electronConfig", 
+                "sub", 
+                "etymology" ]]
+                .rename(columns={'assetName' : 'Element', 'desc' : 'Description'})
+                .to_latex(
+                    index=False,
+                    # caption=df['assetName'],
+                    column_format="|p{1in}|p{2in}|p{0.5in}|p{1in}|p{2in}|" 
+                )
+        )
 
     # subprocess.run(["pdflatex", "annex_a.tex"])
