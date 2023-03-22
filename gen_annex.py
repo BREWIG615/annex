@@ -28,7 +28,6 @@ if __name__ == "__main__":
     # df.sort_values('stateOfMatter', inplace=True)
 
     rows = df.to_dict(orient = 'records')
-    print(rows)
     isotopes = [
         [
             {

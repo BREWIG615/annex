@@ -1,42 +1,54 @@
-{% macro format_element(row_dict, isotope_list) -%}
+\BLOCK{ macro format_element(row_dict, isotope_list) }
 
     \section{\VAR{row_dict['assetName'].upper()}}
 
     \textbf{Description.}
-    \VAR{row['desc']}
+    \VAR{row_dict['desc']}
 
     \textbf{Etymology.}
-    \VAR{row['etymology']}
+    \VAR{row_dict['etymology']}
 
     \begin{center}
 
     \begin{minipage}{0.45\textwidth}
+    % \begin{center}
+    \underline{Isotopes}\\
     \begin{tabular}{l|c}
     \textbf{Name} & \textbf{Weight} \\ \hline
     %% for isotope in isotope_list
         \VAR{isotope['name']} & \VAR{isotope['weight']} \\
     %% endfor
     \end{tabular}
+    % \end{center}
     \end{minipage}
-
+    ~
     \begin{minipage}{0.45\textwidth}
     \begin{tabular}{|ll|} \hline
-    Electron Configuration & \VAR{row['electronConfig']} \\
+    Electron Configuration & \VAR{row_dict['electronConfig']} \\
     Symbol & \VAR{row_dict['sub']} \\
     State at room temp. & \VAR{row_dict['stateOfMatter']} \\ \hline
     \end{tabular}
     \end{minipage}
 
-
     \end{center}
 
-{%- endmacro -%}
+    \newpage
+
+\BLOCK{ endmacro }
 
 \documentclass[12pt]{article}
 
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{12pt}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rfoot{A-\thepage}
+
 \begin{document}
 
-%% for i in range(len(rows))
+%% for i in range(rows | length)
 
     \VAR{format_element(rows[i], isotopes[i])}
 
